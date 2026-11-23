@@ -1,0 +1,179 @@
+/* ページ全体の設定 */
+
+body {
+    /* 背景画像 */
+    background-image: url("/static/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    /* 背景画像が読み込まれる前の色 */
+    background-color: #F9F1EF;
+
+    font-family: sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    color: #59454C;
+}
+
+
+/* タイトル部分 */
+
+header {
+    background-color: rgba(255, 252, 250, 0.55);
+    padding: 40px 20px;
+}
+
+
+h1 {
+    color: #a65d78;
+    font-size: 30px;
+}
+
+/* メイン部分 */
+main {
+    padding: 40px 20px;
+}
+
+/* ボタンを並べる部分 */
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 300px;
+    margin: 30px auto;
+}
+
+/* ボタンのデザイン */
+button {
+    background-color: #e8b8ca;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 18px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* 診断アイテムのカード配置 */
+.item-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    max-width: 650px;
+    margin: 35px auto;
+}
+
+/* アイテムカード */
+.item-card {
+    background-color: rgba(255, 252, 250, 0.85);
+    border: 1px solid #E8CDCC;
+    border-radius: 18px;
+    padding: 25px 10px;
+    color: #956C70;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: 0.25s;
+}
+
+/* イラスト */
+.item-card svg {
+    width: 55px;
+    height: 55px;
+    fill: none;
+    stroke: #A8757C;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* マウスを乗せたとき */
+.item-card:hover {
+    background-color: #F4E2E1;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(149, 108, 112, 0.12);
+}
+
+
+/* スマホ表示 */
+@media (max-width: 600px) {
+
+    /* ページ全体 */
+    body {
+    background-attachment: scroll;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+    /* タイトル部分 */
+    header {
+        padding: 30px 15px;
+    }
+
+    header h1 {
+        font-size: 25px;
+    }
+
+    header p {
+        font-size: 13px;
+    }
+
+    /* メイン部分 */
+    main {
+        padding: 30px 15px;
+    }
+
+    main h2 {
+        font-size: 19px;
+    }
+
+    main p {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+    /* アイテム選択カード */
+    .item-menu {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        margin: 25px auto;
+    }
+
+    .item-card {
+        padding: 18px 4px;
+        font-size: 12px;
+        border-radius: 13px;
+        gap: 10px;
+        min-width: 0;
+    }
+
+    /* イラスト */
+    .item-card svg {
+        width: 42px;
+        height: 42px;
+    }
+
+    /* はい・いいえボタン */
+    .menu {
+        width: 100%;
+        max-width: 300px;
+        gap: 12px;
+        margin: 25px auto;
+    }
+
+    button {
+        min-height: 50px;
+        font-size: 15px;
+    }
+}

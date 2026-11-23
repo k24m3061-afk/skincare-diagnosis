@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skincare Diagnosis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <header>
+        <h1>Skincare Diagnosis</h1>
+        <p>あなたにぴったりのスキンケアを見つけよう。</p>
+    </header>
+
+    <main>
+
+        {% if selected_item == None %}
+
+            <h2>診断するアイテムを選んでね</h2>
+
+            <form method="POST">
+                
+<div class="item-menu">
+
+    <!-- クレンジング -->
+    <button type="submit" name="item" value="cleansing" class="item-card">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="21" y="23" width="22" height="34" rx="5"/>
+            <path d="M27 23 V16 H37 V23 M32 16 V10 H45 M39 10 H48"/>
+            <path d="M26 37 H38"/>
+        </svg>
+        <span>クレンジング</span>
+    </button>
+
+    <!-- 化粧水・乳液 -->
+    <button type="submit" name="item" value="toner" class="item-card">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="21" y="20" width="22" height="37" rx="5"/>
+            <rect x="26" y="10" width="12" height="10" rx="2"/>
+            <path d="M25 37 H39"/>
+        </svg>
+        <span>化粧水・乳液</span>
+    </button>
+
+    <!-- 美容液 -->
+    <button type="submit" name="item" value="serum" class="item-card">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+            <rect x="23" y="29" width="18" height="28" rx="4"/>
+            <path d="M27 29 V24 H37 V29 M32 24 V13"/>
+            <path d="M32 13 L40 5 M36 5 H44"/>
+            <path d="M27 42 H37"/>
+        </svg>
+        <span>美容液</span>
+    </button>
+
+</div>
+
+            </form>
+
+        {% elif "answer" in node %}
+
+            <h2>診断結果</h2>
+            <p>あなたにおすすめなタイプは...</p>
+            <h1>{{ node.answer }}！</h1>
+
+            <a href="{{ url_for('restart') }}">トップに戻る</a>
+
+        {% else %}
+
+            <h2>
+                {% if selected_item == "cleansing" %}
+                    クレンジング診断
+                {% elif selected_item == "toner" %}
+                    化粧水・乳液診断
+                {% elif selected_item == "serum" %}
+                    美容液診断
+                {% endif %}
+            </h2>
+
+            <p>{{ node.q }}</p>
+
+            <form method="POST">
+                <div class="menu">
+                    <button type="submit" name="answer" value="yes">
+                        はい
+                    </button>
+
+                    <button type="submit" name="answer" value="no">
+                        いいえ
+                    </button>
+                </div>
+            </form>
+
+        {% endif %}
+
+    </main>
+</body>
+</html>
